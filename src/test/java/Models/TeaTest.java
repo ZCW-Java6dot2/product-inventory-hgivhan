@@ -21,10 +21,10 @@ public class TeaTest {
     @Test
     public void setId(){
         //given
-        double expected = 000001;
+        int expected = 000001;
         //when
         testId = new Tea();
-        testId.setId();
+        testId.setId(expected);
         //then
         Assertions.assertEquals(expected, testId.getId());
     }
@@ -67,7 +67,7 @@ public class TeaTest {
     }
 
     @Test
-    public void setPrice(){
+    public void setPriceTest(){
         float expected = (float) 3.75;
         testPrice = new Tea();
         testPrice.setPrice(expected);

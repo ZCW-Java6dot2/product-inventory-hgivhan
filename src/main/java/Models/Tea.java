@@ -12,7 +12,7 @@ public class Tea {
         this.name = name;
     }
 
-    public void setId(){
+    public void setId(int id){
         this.id = id;
     }
 
@@ -36,7 +36,7 @@ public class Tea {
         return null;
     }
 
-    public double getId(){
+    public Integer getId(){
         return 0;
     }
 
