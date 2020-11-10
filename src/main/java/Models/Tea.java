@@ -1,12 +1,22 @@
 package Models;
 
 public class Tea {
-    private double id;
+    private int id;
     private String name;
     private String brand;
     private String qty;
     private String ingred;
     private float price;
+
+    public Tea(){}
+    public Tea(String expectedName, int expectedId, String expectedBrand, String expectedQty, String expectedIngred, float expectedPrice) {
+        name = expectedName;
+        id = expectedId;
+        brand = expectedBrand;
+        qty = expectedQty;
+        ingred = expectedIngred;
+        price = expectedPrice;
+    }
 
     public void setName(String name){
         this.name = name;

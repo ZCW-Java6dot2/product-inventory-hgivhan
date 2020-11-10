@@ -11,13 +11,6 @@ public class TeaTest {
     Tea testIngred;
     Tea testPrice;
 
-    /*private int id;
-
-    private String brand;
-    private int qty;
-    private String ingred;
-    private float price;*/
-
     @Test
     public void setId(){
         //given
@@ -68,10 +61,29 @@ public class TeaTest {
 
     @Test
     public void setPriceTest(){
-        float expected = (float) 3.75;
+        float expected = 3.75f;
         testPrice = new Tea();
         testPrice.setPrice(expected);
         Assertions.assertEquals(expected, testPrice.getPrice());
+    }
+
+    @Test
+    public void constructorTest(){
+        String expectedName = "Cha Cha Chai Fresh";
+        int expectedId = 2;
+        String expectedBrand = "BeeHillBotanicals";
+        String expectedQty = "8oz";
+        String expectedIngred = "Ground Cinnamon, Ground Ginger, Ground Cardamom, Ground Black Pepper, Ground Nutmeg, Ground Cloves, Peppermint Leaf, Spearmint Leaf";
+        float expectedPrice = 7.75f;
+
+        Tea testTea = new Tea(expectedName, expectedId, expectedBrand, expectedQty, expectedIngred, expectedPrice);
+
+        Assertions.assertEquals(expectedName, testTea.getName());
+        Assertions.assertEquals(expectedId, testTea.getId());
+        Assertions.assertEquals(expectedBrand, testTea.getBrand());
+        Assertions.assertEquals(expectedQty, testTea.getQty());
+        Assertions.assertEquals(expectedIngred, testTea.getIngred());
+        Assertions.assertEquals(expectedPrice, testTea.getPrice());
     }
 
 }
