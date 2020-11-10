@@ -1,10 +1,59 @@
 package Models;
 
 public class Tea {
-    private int id;
+    private double id;
     private String name;
     private String brand;
-    private int qty;
+    private String qty;
     private String ingred;
     private float price;
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setId(){
+        this.id = id;
+    }
+
+    public void setIngred(String ingred){
+        this.ingred = ingred;
+    }
+
+    public void setBrand(String brand){
+        this.brand = brand;
+    }
+
+    public void setQty(String qty){
+        this.qty = qty;
+    }
+
+    public void setPrice(float price){
+        this.price = price;
+    }
+
+    public String getName(){
+        return null;
+    }
+
+    public double getId(){
+        return 0;
+    }
+
+    public String getBrand(){
+        return null;
+    }
+
+    public String getQty(){
+        return null;
+    }
+
+    public String getIngred(){
+        return null;
+    }
+
+    public float getPrice(){
+        return (float) 0.0;
+    }
+
 }
