@@ -35,7 +35,7 @@ public class TeaTest {
 
     @Test
     public void setBrandTest(){
-        String expected = "BeeHillBotanicals";
+        String expected = "BHB";
 
         testBrand = new Tea();
         testBrand.setBrand(expected);
@@ -71,7 +71,7 @@ public class TeaTest {
     public void constructorTest(){
         String expectedName = "Cha Cha Chai Fresh";
         int expectedId = 2;
-        String expectedBrand = "BeeHillBotanicals";
+        String expectedBrand = "BHB";
         String expectedQty = "8oz";
         String expectedIngred = "Ground Cinnamon, Ground Ginger, Ground Cardamom, Ground Black Pepper, Ground Nutmeg, Ground Cloves, Peppermint Leaf, Spearmint Leaf";
         float expectedPrice = 7.75f;
