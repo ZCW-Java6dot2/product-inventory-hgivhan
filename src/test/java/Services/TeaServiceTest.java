@@ -86,7 +86,7 @@ public class TeaServiceTest {
         TeaService teaService = new TeaService();
         Tea expectedTea = teaService.create(expectedName, expectedBrand, expectedQty, expectedIngred, expectedPrice);
 
-        Tea expectedArrList = new Tea
+        Tea expectedArrList = new Tea();
 
         //public boolean delete(int id){
             //return inventory.removeIf(Tea -> Tea.getId().equals(id));

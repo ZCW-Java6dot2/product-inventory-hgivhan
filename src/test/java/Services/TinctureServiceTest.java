@@ -77,8 +77,6 @@ public class TinctureServiceTest {
         // expected and actual ArrayList have diff hash code
     }
 
-    }
-
     @Test
     public void testDelete(){
 
