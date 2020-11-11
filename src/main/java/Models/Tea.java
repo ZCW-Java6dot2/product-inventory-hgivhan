@@ -43,27 +43,27 @@ public class Tea {
     }
 
     public String getName(){
-        return null;
+        return name;
     }
 
     public Integer getId(){
-        return 0;
+        return id;
     }
 
     public String getBrand(){
-        return null;
+        return brand;
     }
 
     public String getQty(){
-        return null;
+        return qty;
     }
 
     public String getIngred(){
-        return null;
+        return ingred;
     }
 
     public float getPrice(){
-        return (float) 0.0;
+        return price;
     }
 
 }
