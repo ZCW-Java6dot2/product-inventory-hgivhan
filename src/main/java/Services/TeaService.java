@@ -13,26 +13,26 @@ import java.util.List;
 public class TeaService {
     private static int nextId = 0; // the value we'll use to start counting ids
     private ArrayList<Tea> inventory = new ArrayList<>(); // arraylist to hold the info
-    String csvFile = "/Users/hillary/dev/product-inventory-hgivhan/Tea.csv";
-    FileWriter writer = new FileWriter(csvFile);
+//    String csvFile = "/Users/hillary/dev/product-inventory-hgivhan/Tea.csv";
+//    FileWriter writer = new FileWriter(csvFile);
 
 
-    CSVUtils.writeLine(writer, new ArrayList<String>(Arrays.asList(String.valueOf(nextId))));
-
-for (Tea s : inventory) {
-        List<String> list = new ArrayList<>();
-        list.add(String.valueOf(s.getId()));
-        list.add(s.getName());
-        list.add(s.getBrand());
-        list.add(s.getIngred());
-        list.add(String.valueOf(s.getQty()));
-        list.add(String.valueOf(s.getPrice()));
-
-        CSVUtils.writeLine(writer, list);
-    }
-
-writer.flush();
-writer.close();
+//    CSVUtils.writeLine(writer, new ArrayList<String>(Arrays.asList(String.valueOf(nextId))));
+//
+//for (Tea s : inventory) {
+//        List<String> list = new ArrayList<>();
+//        list.add(String.valueOf(s.getId()));
+//        list.add(s.getName());
+//        list.add(s.getBrand());
+//        list.add(s.getIngred());
+//        list.add(String.valueOf(s.getQty()));
+//        list.add(String.valueOf(s.getPrice()));
+//
+//        CSVUtils.writeLine(writer, list);
+//    }
+//
+//writer.flush();
+//writer.close();
 
     private void loadDataTea() {
         String csvFile = "/Users/hillary/dev/product-inventory-hgivhan/Tea.csv";
@@ -53,20 +53,20 @@ writer.close();
                 String qty = beer[4];
                 float price = Float.parseFloat(beer[5]);
 
-                inventory.add(new Tincture(name, id, brand, ingred, qty, price));
+                inventory.add(new Tea(name, id, brand, ingred, qty, price));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    ObjectMapper objectMapper = new ObjectMapper();
-this.inventory = objectMapper.readValue(new File("tincture.json"), new TypeReference<List<Tincture>>(){});
-
-    ObjectMapper mapper = new ObjectMapper();
-    ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-writer.writeValue(new File("tea.json"), inventory);
-
+//    ObjectMapper objectMapper = new ObjectMapper();
+//this.inventory = objectMapper.readValue(new File("tea.json"), new TypeReference<List<Tincture>>(){});
+//
+//    ObjectMapper mapper = new ObjectMapper();
+//    ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+//writer.writeValue(new File("tea.json"), inventory);
+//
 
     public Tea create(String name, String brand, String qty, String ingred, float price){
         Tea createdTea = new Tea(name, nextId++, brand, qty, ingred, price);
@@ -89,7 +89,13 @@ writer.writeValue(new File("tea.json"), inventory);
 
     //delete
     public boolean delete(int id){
-       return inventory.removeIf(Tea -> Tea.getId().equals(id));
+        for (Tea n : inventory) {
+        if (n.getId() == id){
+            inventory.remove(id);
+            return true;
+        }
+        }
+      return false;
         //should remove the object with this id from ArrayList if it exists and returns true
         //otherwise return false
     }

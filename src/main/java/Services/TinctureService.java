@@ -14,26 +14,26 @@ import java.util.List;
 public class TinctureService {
     private static int nextId = 1;
     private ArrayList<Tincture> inventory = new ArrayList<>();
-    String csvFile = "/Users/hillary/dev/product-inventory-hgivhan/Tincture.csv";
-    FileWriter writer = new FileWriter(csvFile);
+//    String csvFile = "/Users/hillary/dev/product-inventory-hgivhan/Tincture.csv";
+//    FileWriter writer = new FileWriter(csvFile);
 
-
-    CSVUtils.writeLine(writer, new ArrayList<String>(Arrays.asList(String.valueOf(nextId))));
-
-for (Tincture t : inventory) {
-        List<String> list = new ArrayList<>();
-        list.add(String.valueOf(t.getId()));
-        list.add(t.getName());
-        list.add(t.getBrand());
-        list.add(t.getIngred());
-        list.add(String.valueOf(t.getQty()));
-        list.add(String.valueOf(t.getPrice()));
-
-        CSVUtils.writeLine(writer, list);
-    }
-
-writer.flush();
-writer.close();
+//
+//    CSVUtils.writeLine(writer, new ArrayList<String>(Arrays.asList(String.valueOf(nextId))));
+//
+//for(Tincture t : inventory) {
+//        List<String> list = new ArrayList<>();
+//        list.add(String.valueOf(t.getId()));
+//        list.add(t.getName());
+//        list.add(t.getBrand());
+//        list.add(t.getIngred());
+//        list.add(String.valueOf(t.getQty()));
+//        list.add(String.valueOf(t.getPrice()));
+//
+//        CSVUtils.writeLine(writer, list);
+//    }
+//
+//writer.flush();
+//writer.close();
 
     private void loadDataTincture() {
         String csvFile = "/Users/hillary/dev/product-inventory-hgivhan/Tincture.csv";
@@ -61,12 +61,12 @@ writer.close();
         }
     }
 
-    ObjectMapper objectMapper = new ObjectMapper();
-this.inventory = objectMapper.readValue(new File("tea.json"), new TypeReference<List<Tea>>(){});
-
-    ObjectMapper mapper = new ObjectMapper();
-    ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-writer.writeValue(new File("tincture.json"), inventory);
+//    ObjectMapper objectMapper = new ObjectMapper();
+//this.inventory = objectMapper.readValue(new File("tincture.json"), new TypeReference<List<Tea>>(){});
+//
+//    ObjectMapper mapper = new ObjectMapper();
+//    ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+//writer.writeValue(new File("tincture.json"), inventory);
 
 
     public Tincture create(String name, String brand, String qty, String ingred, float price){
@@ -89,7 +89,13 @@ writer.writeValue(new File("tincture.json"), inventory);
 
     //delete
     public boolean delete(int id){
-        return inventory.removeIf(Tincture -> Tincture.getId().equals(id));
+        for (Tincture n : inventory) {
+            if (n.getId() == id){
+                inventory.remove(id);
+                return true;
+            }
+        }
+        return false;
         //should remove the object with this id from ArrayList if it exists and returns true
         //otherwise return false
     }

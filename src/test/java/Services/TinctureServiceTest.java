@@ -5,6 +5,8 @@ import Models.Tincture;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class TinctureServiceTest {
 
     @Test
@@ -79,8 +81,6 @@ public class TinctureServiceTest {
 
     @Test
     public void testDelete(){
-
-        //make sure tea is created so that there is a tea to find
         String expectedName = "Daily Immune Boost";
         int expectedId = 0;
         String expectedBrand = "BHB";
@@ -91,6 +91,7 @@ public class TinctureServiceTest {
         TinctureService tinctureService = new TinctureService();
         Tincture expectedTincture = tinctureService.create(expectedName, expectedBrand, expectedQty, expectedIngred, expectedPrice);
 
+        assertTrue(tinctureService.delete(expectedId));
 
     }
 }

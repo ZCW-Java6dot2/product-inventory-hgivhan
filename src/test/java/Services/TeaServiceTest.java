@@ -4,6 +4,8 @@ import Models.Tea;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class TeaServiceTest {
 
     @Test
@@ -86,10 +88,9 @@ public class TeaServiceTest {
         TeaService teaService = new TeaService();
         Tea expectedTea = teaService.create(expectedName, expectedBrand, expectedQty, expectedIngred, expectedPrice);
 
-        Tea expectedArrList = new Tea();
+        assertTrue(teaService.delete(expectedId));
 
         //public boolean delete(int id){
-            //return inventory.removeIf(Tea -> Tea.getId().equals(id));
             //should remove the object with this id from ArrayList if it exists and returns true
             //otherwise return false
     }
