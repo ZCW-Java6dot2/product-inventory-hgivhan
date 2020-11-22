@@ -2,11 +2,12 @@ package Services;
 
 import Models.Tea;
 import Models.Tincture;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import jdk.internal.org.objectweb.asm.TypeReference;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,26 +15,33 @@ import java.util.List;
 public class TinctureService {
     private static int nextId = 1;
     private ArrayList<Tincture> inventory = new ArrayList<>();
-//    String csvFile = "/Users/hillary/dev/product-inventory-hgivhan/Tincture.csv";
-//    FileWriter writer = new FileWriter(csvFile);
 
-//
-//    CSVUtils.writeLine(writer, new ArrayList<String>(Arrays.asList(String.valueOf(nextId))));
-//
-//for(Tincture t : inventory) {
-//        List<String> list = new ArrayList<>();
-//        list.add(String.valueOf(t.getId()));
-//        list.add(t.getName());
-//        list.add(t.getBrand());
-//        list.add(t.getIngred());
-//        list.add(String.valueOf(t.getQty()));
-//        list.add(String.valueOf(t.getPrice()));
-//
-//        CSVUtils.writeLine(writer, list);
-//    }
-//
-//writer.flush();
-//writer.close();
+    public void saveCSV() {
+        try {
+            String csvFile = "/Users/hillary/dev/product-inventory-hgivhan/Tincture.csv";
+            FileWriter writer = new FileWriter(csvFile);
+
+
+            CSVUtils.writeLine(writer, new ArrayList<String>(Arrays.asList(String.valueOf(nextId))));
+
+            for (Tincture t : inventory) {
+                List<String> list = new ArrayList<>();
+                list.add(String.valueOf(t.getId()));
+                list.add(t.getName());
+                list.add(t.getBrand());
+                list.add(t.getIngred());
+                list.add(String.valueOf(t.getQty()));
+                list.add(String.valueOf(t.getPrice()));
+
+                CSVUtils.writeLine(writer, list);
+            }
+
+            writer.flush();
+            writer.close();
+        } catch (Exception e) {
+            System.out.print("CSV not working!!");
+        }
+    }
 
     private void loadDataTincture() {
         String csvFile = "/Users/hillary/dev/product-inventory-hgivhan/Tincture.csv";
@@ -45,14 +53,14 @@ public class TinctureService {
 
             while ((line = br.readLine()) != null) {
                 // split line with comma
-                String[] beer = line.split(csvSplitBy);
+                String[] tincture = line.split(csvSplitBy);
 
-                String name = beer[0];
-                int id = Integer.parseInt(beer[1]);
-                String brand = beer[2];
-                String ingred = beer[3];
-                String qty = beer[4];
-                float price = Float.parseFloat(beer[5]);
+                String name = tincture[0];
+                int id = Integer.parseInt(tincture[1]);
+                String brand = tincture[2];
+                String ingred = tincture[3];
+                String qty = tincture[4];
+                float price = Float.parseFloat(tincture[5]);
 
                 inventory.add(new Tincture(name, id, brand, ingred, qty, price));
             }
@@ -61,12 +69,16 @@ public class TinctureService {
         }
     }
 
-//    ObjectMapper objectMapper = new ObjectMapper();
-//this.inventory = objectMapper.readValue(new File("tincture.json"), new TypeReference<List<Tea>>(){});
+//    public void jSon() {
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        this.inventory = objectMapper.readValue(new File("tincture.json"), new TypeReference<List<Tincture>>() {
+//        });
 //
-//    ObjectMapper mapper = new ObjectMapper();
-//    ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-//writer.writeValue(new File("tincture.json"), inventory);
+//        ObjectMapper mapper = new ObjectMapper();
+//        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+//        writer.writeValue(new File("tincture.json"), inventory);
+//    }
+
 
 
     public Tincture create(String name, String brand, String qty, String ingred, float price){
@@ -76,8 +88,8 @@ public class TinctureService {
     }
 
     //read
-    public Tincture findTincture(int id){
-        return inventory.get(id);
+    public Tincture findTincture(int nextId){
+        return inventory.get(nextId);
         // should take an int and return an object with that id, if exists
     }
 
@@ -88,14 +100,22 @@ public class TinctureService {
     }
 
     //delete
-    public boolean delete(int id){
-        for (Tincture n : inventory) {
-            if (n.getId() == id){
-                inventory.remove(id);
-                return true;
-            }
+    public boolean delete(int nextId){
+        boolean isTincturePresent = false;
+        for (int i = 0; i < inventory.size(); i++){
+            isTincturePresent = nextId == i;
         }
-        return false;
+        return isTincturePresent;
+
+//        for (Tincture n : inventory) {
+//            System.out.println(n);
+//            if (n.getId() == nextId){
+//                inventory.remove(nextId);
+//                return true;
+//            }
+//        }
+//
+//        return false;
         //should remove the object with this id from ArrayList if it exists and returns true
         //otherwise return false
     }

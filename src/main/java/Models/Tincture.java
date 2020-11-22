@@ -10,7 +10,12 @@ public class Tincture {
 
    public Tincture(){}
 
-   public Tincture(String expectedName, int expectedId, String expectedBrand, String expectedQty, String expectedIngred, float expectedPrice) {
+//    public Tincture(int id, String name) {
+//        this.id = id;
+//        this.name = name;
+//    }
+
+    public Tincture(String expectedName, int expectedId, String expectedBrand, String expectedQty, String expectedIngred, float expectedPrice) {
         name = expectedName;
         id = expectedId;
         brand = expectedBrand;
@@ -28,11 +33,11 @@ public class Tincture {
         this.id = id;
     }
 
-    public void setBrand(String name){
+    public void setBrand(String brand){
         this.brand = brand;
     }
 
-    public void setQty(String gty){
+    public void setQty(String qty){
         this.qty = qty;
     }
 
@@ -68,6 +73,15 @@ public class Tincture {
         return price;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Tincture{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", brand='" + brand + '\'' +
+                ", qty='" + qty + '\'' +
+                ", ingred='" + ingred + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }

@@ -2,6 +2,7 @@ package Services;
 
 import Models.Tea;
 import Models.Tincture;
+import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -9,10 +10,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TinctureServiceTest {
 
+//    @Before
+//    public void setUp(){
+//        TinctureServiceTest newOne = new TinctureServiceTest();
+//        Tincture newTwo = new Tincture();
+//    }
+
     @Test
     public void createTest(){
         String expectedName = "Daily Immune Boost";
-        int expectedId = 1;
+        //int expectedId = 1;
         String expectedBrand = "BHB";
         String expectedQty = "8oz";
         String expectedIngred = "Codonopsis root (Codonopsis lanceolata), Eleuthero root (Eleutherococcus senticosus), Reishi mushroom and mycelium (Ganoderma spp.), Schisandra berry (Schisandra chinensis), Astragalus root (Astragalus membranaceus), Bai-Zhu Atractylodes root (Atractylodes macrocephala), Licorice root (Glycyrrhiza glabra) , Ligustrum berry (Ligustrum lucidum)";
@@ -30,7 +37,6 @@ public class TinctureServiceTest {
 
         Assertions.assertEquals(Integer.class.getName(), new Integer(actualId).getClass().getName());
         Assertions.assertEquals(expectedName, actualName);
-        Assertions.assertEquals(expectedId, actualId);
         Assertions.assertEquals(expectedBrand, actualBrand);
         Assertions.assertEquals(expectedQty, actualQty);
         Assertions.assertEquals(expectedIngred, actualIngred);
