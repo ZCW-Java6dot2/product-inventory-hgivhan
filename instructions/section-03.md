@@ -46,29 +46,29 @@ Console.printWelcome()
 Whenever we want to capture user input or display output we will create methods in the Console class to handle these behaviours.
 
 ## Part 2 - Application class
-Now it is time to put all of these classes we have created to work. We will begin by creating a App class to initialize the application logic and initialize the services. This is the top most class and will start the program
+Now it is time to put all of these classes we have created to work. We will begin by creating a Services.App class to initialize the application logic and initialize the services. This is the top most class and will start the program
 
 ```
-public class App {
+public class Services.App {
 	public static void main(String... args){
 	
 	}
 }
 ```
 
-We will use the special _main()_ method to instantiate the App class and initialize logic. 
+We will use the special _main()_ method to instantiate the Services.App class and initialize logic. 
 
 
 ## Part 3 - Initialize
 We can continue to Initialize objects that the application needs to run.
 
 ```
-public class App {
+public class Services.App {
 
 	private SneakerService sneakerService = new SneakerService(); // (1)
 	
 	public static void main(String... args){
-		App application = new App(); // (2)
+		Services.App application = new Services.App(); // (2)
 		application.init();  // (3)
 	}
 	
