@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="product-inventory-hgivhan" />
         <module name="ProductInventoryLab" />
       </profile>
     </annotationProcessing>
